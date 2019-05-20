@@ -2,7 +2,7 @@
   <div class="ToDo">
      <h1>Your To-Do List</h1>
      <AddTodo v-on:add-todo="addTodo" />
-     <Todos v-bind:todos="todos" v-on:del-todo="deleteTodo" />
+     <Todos v-bind:todos="todos" v-on:del-todo="deleteTodo" v-on:check-todo="checkToDo"/>
   </div>
 </template>
 
@@ -20,38 +20,34 @@ export default {
   },
   data() {
     return {
-      todos: [
-          {
-              id: 1,
-              title: "delectus aut autem",
-              completed: false 
-          },
-          {
-              id: 2,
-              title: "quis ut nam facilis et officia qui",
-              completed: true 
-          },
-          {
-              id: 3,
-              title: "fugiat veniam minus",
-              completed: false 
-          },
-          {
-              id: 4,
-              title: "et porro tempora",
-              completed: false 
-          }
-      ]
+      todos: []
     }
   },
   methods: {
     deleteTodo(id) {
-      this.todos = this.todos.filter(todo => todo.id !== id)
+      axios.delete(`http://localhost:3000/api/todos/${id}`)
+        .then(res => this.todos = this.todos.filter(todo => todo.id !== id))
+        .catch(err => console.log(err));
     },
     addTodo(newTodo) {
-      this.todos = [...this.todos, newTodo];
+      const {title, completed} = newTodo;
+
+      axios.post('http://localhost:3000/api/todos', {
+        title, completed
+      })
+        .then(res => this.todos = [...this.todos, res.data])
+        .catch(err => console.log(err));
+    },
+    checkToDo(id){
+      axios.put(`http://localhost:3000/api/todos/${id}`)
+      .then()
+      .catch(err => console.log(err));
     }
+  },
+  created() {
+    axios.get('http://localhost:3000/api/todos')
+      .then(res => this.todos = res.data)
+      .catch(err => console.log(err));
   }
 }
-
 </script>

@@ -1,14 +1,16 @@
+
 # Extension Engine Summer Camp project website
-##Frontend
+
+## Frontend
 Vue.JS
-##Backend
+## Backend
 Node.JS with Express
 
-###Features
+### Features
   
   - To-Do list
   - Memo's
   - ...and much more
   
-##Website link: [a link]https://nikola-zitko.github.io/#/
+## Website link: https://nikola-zitko.github.io/#/
 

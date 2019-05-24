@@ -1,29 +1,16 @@
-# ee-summecamp-2019
 
-## Project setup
-```
-npm install
-```
+# Extension Engine Summer Camp project website
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Frontend
+Vue.JS
+## Backend
+Node.JS with Express
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### Features
+  
+  - To-Do list
+  - Memo's
+  - ...and much more
+  
+## Website link: https://nikola-zitko.github.io/#/
 
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

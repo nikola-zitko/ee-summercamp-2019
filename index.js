@@ -21,7 +21,7 @@ app.use(function (req, res, next) {
 });
 app.use(express.json());
 
-const todos = [
+var todos = [
     {
         id: 1,
         title: "delectus aut autem",
@@ -83,7 +83,7 @@ app.put('/api/todos/:id', (req, res) => {
     if(!todo){
         res.status(404).send('Todo with the given ID was not found');
     }
-    todo.completed = req.body.completed;
+    todo.completed = !todo.completed;
     res.send(todo);
 })
 

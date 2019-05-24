@@ -40,7 +40,7 @@ export default {
     },
     checkToDo(id){
       axios.put(`http://localhost:3000/api/todos/${id}`)
-      .then()
+      .then(res => this.todos[id-1].completed = !this.todos[id-1].completed)
       .catch(err => console.log(err));
     }
   },

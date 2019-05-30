@@ -15,3 +15,8 @@ Node.JS with Express
 ## Website link: https://nikola-zitko.github.io/#/
 *currently doesn't work
 
+## Localhost setup:
+- run "npm install" to install dependencies
+- run "nodemon index.js" to setup the localhost server
+- run "vue serve" to launch the website
+

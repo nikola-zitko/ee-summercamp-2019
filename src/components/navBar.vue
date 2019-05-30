@@ -4,6 +4,7 @@
     <link href="https://fonts.googleapis.com/css?family=Play&display=swap" rel="stylesheet">
     <ul>
         <li><a href="#/">Home</a></li>
+        <li><a href="#/Memo">Memos</a></li>
         <li><a href="#/ToDo">To-Do List</a></li>
         <li><a href="#/about">About</a></li>
         <li id="author">Made by: Nikola Žitko</li>

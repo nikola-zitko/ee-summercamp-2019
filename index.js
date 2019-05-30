@@ -20,7 +20,7 @@ app.use(function (req, res, next) {
     next();
 });
 app.use(express.json());
-
+var IDcounter = 10;
 var todos = [
     {
         id: 1,
@@ -70,10 +70,12 @@ app.post('/api/todos', (req, res) => {
     }
 
     const todo = {
-        id: todos.length + 1,
+        id: IDcounter + 1,
+        
         title: req.body.title,
         completed: req.body.completed
     };
+    IDcounter++;
     todos.push(todo);
     res.send(todo);
 })
@@ -100,6 +102,65 @@ app.delete('/api/todos/:id', (req, res) => {
 
 })
 
+
+//MEMOS
+var memos = [
+    {
+        id: 1,
+        title: "Sastanak",
+        text: "Cetvrtak 18:00h"
+    },
+    {
+        id: 2,
+        title: "Hrana za macke",
+        text: "Kupiti whiskas"
+    }
+];
+var IDcounter2 = 10;
+
+
+app.get('/api/memos', (req, res) => {
+    res.send(memos);
+})
+
+app.get('/api/memos/:id', (req, res) =>{
+    const memo = memos.find(t => t.id === parseInt(req.params.id));
+    if(!memo){
+        res.status(404).send('Memo with the given ID was not found');
+    }
+    else{
+        res.send(memo);
+    }
+})
+
+app.post('/api/memos', (req, res) => {
+    if (!req.body.title){
+        res.status(400).send('Title is required.');
+        return;
+    }
+
+    const memo = {
+        id: IDcounter2 + 1,
+        title: req.body.title,
+        text: req.body.text
+    };
+    IDcounter2++;
+    memos.push(memo);
+    res.send(memo);
+})
+
+app.delete('/api/memos/:id', (req, res) => {
+    const memo = memos.find(t => t.id === parseInt(req.params.id));
+    if(!memo){
+        res.status(404).send('Memo with the given ID was not found');
+    }
+
+    const index = memos.indexOf(memo);
+    memos.splice(index, 1);
+
+    res.send(memo);
+
+})
 
 //PORT
 const port = process.env.PORT || 3000;

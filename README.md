@@ -18,5 +18,5 @@ Node.JS with Express
 ## Localhost setup:
 - run "npm install" to install dependencies
 - run "nodemon index.js" to setup the localhost server
-- run "vue serve" to launch the website
+- run "npm run serve" to launch the website
 
